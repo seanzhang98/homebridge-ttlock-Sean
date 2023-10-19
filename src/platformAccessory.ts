@@ -49,6 +49,9 @@ export class TtlockPlatformAccessory {
     // register handlers for the Lock Current State Characteristic
     this.service.getCharacteristic(this.platform.Characteristic.LockCurrentState)
       .onGet(this.handleLockTargetStateGet.bind(this));
+
+    // set battery
+    this.BatteryLevel; // display power by this
   }
 
   /**
@@ -219,7 +222,7 @@ export class TtlockPlatformAccessory {
       }
 
     }
-
+    this.BatteryLevel = currentBatteryLevelValue;
     return currentBatteryLevelValue;
   }
 }
